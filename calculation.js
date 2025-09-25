@@ -1,0 +1,7 @@
+let number = Math.floor(Math.random()*1500);
+ 
+if (number % 2 == 0) {
+    console.log(`The number ${number} is even!`);
+} else {
+    console.log (`The number ${number} is odd!`);
+}
