@@ -1,4 +1,4 @@
-let number = Math.floor(Math.random()*1500);
+let number = Math.floor(Math.random()*15500);
  
 if (number % 2 == 0) {
     console.log(`The number ${number} is even!`);
