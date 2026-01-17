@@ -1,4 +1,4 @@
-// Write your code here 
+
 var a = [2, 5, 7, 3 ,4];
 
 

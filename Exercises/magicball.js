@@ -1,4 +1,4 @@
-// Write code below 💖
+
 const number = Math.floor(Math.random()*9)+1;
 if (number === 1) {
     console.log('Yes - definitely.');

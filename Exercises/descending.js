@@ -1,7 +1,7 @@
 function descendingOrder(num) {
-    let digits = num.toString().split(''); // OPRAVA: konvertuj na array
+    let digits = num.toString().split(''); 
     
-    // Bubble sort (zostupne)
+    // Bubble sort
     for (let i = 0; i < digits.length; i++) {
         for (let j = 0; j < digits.length - 1 - i; j++) {
             if (digits[j] < digits[j + 1]) {

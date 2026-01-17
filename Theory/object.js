@@ -1,4 +1,4 @@
-// Write code below 💖
+
 const car = {
   model : 'Honda',
   year : 2004,

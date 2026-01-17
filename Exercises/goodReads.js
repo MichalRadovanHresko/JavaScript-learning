@@ -1,8 +1,4 @@
-// Define object here 💖
 
-// Define addBooks() function here 💖
-
-// Define showGoodreadsInfo() function here 💖
 const goodreadsInfo = {
   currentlyReading: [
     {
