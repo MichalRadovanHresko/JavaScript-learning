@@ -3,7 +3,7 @@ let player2 = Math.floor(Math.random() * 3);
 const rock = 0;
 const paper = 1;
 const scissors = 2;
-// premena na string
+
 if (player1 === 0) {
     player1 = 'rock';
 } else if (player1 === 1) {
