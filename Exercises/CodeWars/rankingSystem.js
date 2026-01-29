@@ -39,16 +39,67 @@ user.progress # => 0 // progress is now zero
 user.rank # => -7 // rank was upgraded to -7
 */
 
-function User(level) {
+function User() {
     this.ranks = [-8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, 8];
     this.userRank = this.ranks[0];
-    this.progress = 0;
+    this._progress = 0;
 }
-User.prototype.rank = function() {
-    return this.userRank;
-};
+
+Object.defineProperty(User.prototype, 'rank', {
+    get: function() {
+        return this.userRank;
+    }
+});
+
+Object.defineProperty(User.prototype, 'progress', {
+    get: function() {
+        return this._progress;
+    }
+});
+
 User.prototype.incProgress = function(level) {
     if(!this.ranks.includes(level))
         throw new Error('This is not a valid level number!');
-    return 10 * (this.userRank - level) * (this.userRank - level);
-};
+    
+    if (this.userRank === 8) {
+        return;
+    }
+    
+    let userIndex = this.ranks.indexOf(this.userRank);
+    let levelIndex = this.ranks.indexOf(level);
+    let d = levelIndex - userIndex;
+    let points = 0;
+    if (d === 0)
+        points = 3;
+    else if (d === -1)
+        points = 1;
+    else if (d < -1)
+        points = 0;
+    else 
+        points = 10 * d * d;
+    this._progress += points;
+    
+    if (this._progress >= 100) {
+        let rankUps = Math.floor(this._progress / 100)
+        userIndex += rankUps;
+        if (userIndex >= 15) {
+            userIndex = 15;
+            this._progress = 0;
+        } 
+        else 
+            this._progress = this._progress % 100;
+        this.userRank = this.ranks[userIndex];
+    }
+};  
+
+const user = new User();
+console.log("Start - Rank:", user.rank); 
+console.log("Start - Progress:", user.progress);
+
+user.incProgress(-7);
+console.log("After -7 - Progress:", user.progress); 
+console.log("After -7 - Rank:", user.rank); 
+
+user.incProgress(-5);
+console.log("After -5 - Progress:", user.progress);
+console.log("After -5 - Rank:", user.rank);  
