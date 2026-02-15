@@ -10,17 +10,19 @@
 
 
 const deleteNth = (arr, n) => {
-    for(let i = 0; i < arr.length; i++) {
-        let limit = 1;
-        for(let j = 0; j < arr.length -1; j++) {
-            if (arr[i] === arr[j + 1]) {
-                limit++;
-            }
-        }
-        console.log(limit);
-        // if (limit > n)
-    }
+    const counter = new Map(); 
+    const result = [];
     
+    for (let num of arr) {
+        const count = counter.get(num) || 0;
+        
+        if (count < n) { 
+            result.push(num);
+            counter.set(num, count + 1); 
+        }
+    }
+    return result;
 };
 
-deleteNth([1,1,3,3,1,1],2);
+console.log(deleteNth([1,1,3,3,1,1], 2)); 
+console.log(deleteNth([20,37,20,21], 1));  
