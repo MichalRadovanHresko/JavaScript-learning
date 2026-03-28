@@ -53,5 +53,11 @@
 // // "getCallCount" - total call count: 1
 
 const memoize = (fn) => {
-  return function (...args) {};
+  return function (...args) {
+    const key = JSON.stringify(...args);
+  };
 };
+
+const sum = (a, b) => a + b;
+const memoizedSum = memoize(sum);
+console.log(memoizedSum(2, 2));
