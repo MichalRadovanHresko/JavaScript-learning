@@ -20,8 +20,7 @@
 
 //     promise1 and promise2 are promises that resolve with a number
 const addTwoPromises = async (promise1, promise2) => {
-  const result = (await promise1) + (await promise2);
-  return result;
+  return (await promise1) + (await promise2);
 };
 
 addTwoPromises(Promise.resolve(2), Promise.resolve(2)).then(console.log); // 4
